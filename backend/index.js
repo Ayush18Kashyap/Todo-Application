@@ -1,15 +1,19 @@
 const express = require('express');
+const cors = require('cors');
 const { createTodo, updateTodo } = require('./types');
 const { todo } = require('./db');
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/Todos', async function(req, res) {
     const todos = await todo.find() // Get all todos from the DB
     console.log(todo);//find gives promise, so we need to use await
     res.json(todo);// send the todos as a response
 })
+
+
 
 
 app.post('/Todos', async function (req, res) {
@@ -30,6 +34,8 @@ app.post('/Todos', async function (req, res) {
 
     res.json({ msg: 'Todo created successfully'});
 })
+
+
 
 
 app.put('/completed', async function (req, res) {
