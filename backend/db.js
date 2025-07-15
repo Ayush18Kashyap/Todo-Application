@@ -6,7 +6,10 @@ const  todoSchema = mongoose.Schema({
     description: String,
     completed: Boolean
 })
-
+// todos is the name of the collection in mongodb
+// mongoose will automatically create a collection named 'todos' in the database
+//todo is the model we created in db.js
+// It is used to interact with the todos collection in the database
 const todo = mongoose.model('todos', todoSchema);
 module.exports = {
     todo
